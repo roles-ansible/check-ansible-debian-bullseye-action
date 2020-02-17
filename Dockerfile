@@ -6,8 +6,8 @@ LABEL "homepage"="https://github.com/roles-ansible/check-ansible-debian-stable-a
 
 LABEL "com.github.actions.name"="check-ansible-debian-stable"
 LABEL "com.github.actions.description"="Check ansible role with Debian stable"
-LABEL "com.github.actions.icon"="activity"
-LABEL "com.github.actions.color"="gray-dark"
+LABEL "com.github.actions.icon"="aperture"
+LABEL "com.github.actions.color"="green"
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     software-properties-common \

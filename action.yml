@@ -13,3 +13,6 @@ runs:
   image: Dockerfile
   env:
     TARGETS: ${{ inputs.targets }}
+branding:
+  icon: 'aperture' 
+  color: 'green'
