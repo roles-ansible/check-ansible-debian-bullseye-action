@@ -1,14 +1,16 @@
-# Ansible Lint for GitHub Action
-This action allows you to run `ansible-lint` with no additional options.
+[![MIT License](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/.github/license.svg)](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/LICENSE)
 
+ Check Ansible Debian stable
+=======================
+This action allows you to test your ansible role in a Docker Container with ``debian:stable``.
 
 ## Usage
-To use the action simply create an `ansible-lint.yml` (or choose custom `*.yml` name) in the `.github/workflows/` directory.
+To use the action simply create an `ansible-debian-stable.yml` (or choose custom `*.yml` name) in the `.github/workflows/` directory.
 
 For example:
 
 ```yaml
-name: Ansible Lint  # feel free to pick your own name
+name: Ansible check debian:stable  # feel free to pick your own name
 
 on: [push, pull_request]
 
@@ -21,48 +23,19 @@ jobs:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
 
-    - name: Lint Ansible Playbook
+    - name: ansible check with debian:stable
       # replace "master" with any valid ref
-      uses: ansible/ansible-lint-action@master
+      uses: ansible/check-ansible-debian-stable-action@master
       with:
         # [required]
-        # Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
-        # or valid Ansible directories according to the Ansible role
-        # directory structure.
-        # If you want to lint multiple ansible files, use the following syntax
-        # targets: |
-        #   playbook_1.yml
-        #   playbook_2.yml
-        targets: ""
-        # [optional]
-        # Arguments to be passed to the ansible-lint
-
-        # Options:
-        #   -q                    quieter, although not silent output
-        #   -p                    parseable output in the format of pep8
-        #   --parseable-severity  parseable output including severity of rule
-        #   -r RULESDIR           specify one or more rules directories using one or
-        #                         more -r arguments. Any -r flags override the default
-        #                         rules in ansiblelint/rules, unless -R is also used.
-        #   -R                    Use default rules in ansiblelint/rules in addition to
-        #                         any extra
-        #                         rules directories specified with -r. There is no need
-        #                         to specify this if no -r flags are used
-        #   -t TAGS               only check rules whose id/tags match these values
-        #   -x SKIP_LIST          only check rules whose id/tags do not match these
-        #                         values
-        #   --nocolor             disable colored output
-        #   --exclude=EXCLUDE_PATHS
-        #                         path to directories or files to skip. This option is
-        #                         repeatable.
-        #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
-        args: ""
+        # Paths to your ansible role you want to test
+        # For Example:
+        # targets: "role/my_role/"
+        targets: "./"
 
 ```
 
-> TIP: N.B. Use `ansible/ansible-lint-action@v4.1.0` or any other valid tag, or branch, or commit SHA instead of `v4.1.0` to pin the action to use a specific version.
-
-Alternatively, you can run the ansible lint only on certain branches:
+Alternatively, you can run the ansible check only on certain branches:
 
 ```yaml
 
@@ -78,9 +51,11 @@ or on various [events](https://help.github.com/en/articles/events-that-trigger-w
 <br>
 
 ## License
-The Dockerfile and associated scripts and documentation in this project are released under the [MIT](license).
+The Dockerfile and associated scripts and documentation in this project are released under the [MIT](LICENSE).
 
 
 ## Credits
 The initial GitHub action has been created by [Stefan Stölzle](/stoe) at
 [stoe/actions](https://github.com/stoe/actions).
+It was used by ansible for lint checks. at [github.com/ansible](https://github.com/ansible/ansible-lint-action.git)
+And modified from L3D to check ansible roles.

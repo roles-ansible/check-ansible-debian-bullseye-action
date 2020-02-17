@@ -5,7 +5,7 @@ set -x
 
 # Generates client.
 # env:
-#   [required] TARGETS : Files or directories (i.e., roles, playbooks, tasks, handlers etc..) to be tested
+#   [required] TARGETS : Path to your ansible role you want to be tested. (e.g, './' or 'roles/my_role/') to be tested
 ansible::test() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
