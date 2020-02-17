@@ -23,7 +23,5 @@ RUN pip3 install setuptools && pip3 install ansible
 
 RUN ansible --version
 
-RUN mkdir -p /etc/ansible && echo -e "[local]\nlocalhost ansible_connection=local ansible_python_interpreter='/usr/bin/python3'" | tee -a /etc/ansible/hosts
-
 ADD ansible-docker.sh /ansible-docker.sh
 ENTRYPOINT ["/ansible-docker.sh"]

@@ -23,7 +23,7 @@ ansible::test() {
   # generate ansible.cfg
   echo -e """
 [defaults]
-inventory = /etc/ansible/host
+inventory = host.ini
 nocows = True
 host_key_checking = False
 forks = 20
@@ -32,7 +32,11 @@ fact_caching_connection = $HOME/facts
 fact_caching_timeout = 7200
 stdout_callback = yaml
 ansible_python_interpreter=/usr/bin/python3
+ansible_connection=local
 """ | tee -a ansible.cfg
+
+  # create host list
+  echo -e "[local]\nlocalhost" | tee -a host.ini
 
   # execute playbook
   ansible-playbook -vvv -i localhost deploy.yml
