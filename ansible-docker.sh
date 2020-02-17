@@ -20,6 +20,20 @@ ansible::test() {
       - \""${TARGETS}"\"
     """ | tee -a deploy.yml
 
+  # generate ansible.cfg
+  echo -e """
+[defaults]
+inventory = /etc/ansible/host
+nocows = True
+host_key_checking = False
+forks = 20
+fact_caching = jsonfile
+fact_caching_connection = $HOME/facts
+fact_caching_timeout = 7200
+stdout_callback = yaml
+ansible_python_interpreter=/usr/bin/python3
+""" | tee -a ansible.cfg
+
   # execute playbook
   ansible-playbook -vvv -i localhost deploy.yml
 }
