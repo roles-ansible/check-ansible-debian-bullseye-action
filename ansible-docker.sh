@@ -11,7 +11,16 @@ ansible::test() {
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
   pushd ${GITHUB_WORKSPACE}
 
-  ansible -v localhost -m include_role -a name=${TARGETS}
+  # generate playbook to be executed
+  echo -e """---
+  - name: test a ansible role
+    hosts: localhost
+    tags: default
+    roles: "${TARGETS}"
+    """ | tee -a deploy.yml
+
+  # execute playbook
+  ansible-playbook -vvv -i localhost deploy.yml
 }
 
 if [ "$0" = "$BASH_SOURCE" ] ; then
