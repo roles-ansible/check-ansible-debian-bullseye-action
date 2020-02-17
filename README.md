@@ -50,12 +50,17 @@ or on various [events](https://help.github.com/en/articles/events-that-trigger-w
 
 <br>
 
-## License
-The Dockerfile and associated scripts and documentation in this project are released under the [MIT](LICENSE).
+ Contributing
+-------------
+If you are missing a feature or see a bug. Please report it. Or - if you like - open a pull-request.
 
+ License
+----------
+The Dockerfile and associated scripts and documentation in this project are released under the [MIT License](LICENSE).
 
-## Credits
+ Credits
+--------------
 The initial GitHub action has been created by [Stefan Stölzle](/stoe) at
-[stoe/actions](https://github.com/stoe/actions).
-It was used by ansible for lint checks. at [github.com/ansible](https://github.com/ansible/ansible-lint-action.git)
-And modified from L3D to check ansible roles.
+[stoe/actions](https://github.com/stoe/actions).<br/>
+It was used by ansible for lint checks. at [ansible/ansible-lint-action](https://github.com/ansible/ansible-lint-action.git)<br/>
+It was modified from L3D to check ansible roles.
