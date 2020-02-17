@@ -1,4 +1,4 @@
-[![MIT License](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/.github/license.svg)](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/LICENSE)
+[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-stable-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/LICENSE)
 
  Check Ansible Debian stable
 =======================
@@ -25,7 +25,7 @@ jobs:
 
     - name: ansible check with debian:stable
       # replace "master" with any valid ref
-      uses: ansible/check-ansible-debian-stable-action@master
+      uses: roles-ansible/check-ansible-debian-stable-action@master
       with:
         # [required]
         # Paths to your ansible role you want to test
