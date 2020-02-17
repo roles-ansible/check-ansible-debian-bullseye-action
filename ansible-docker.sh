@@ -16,7 +16,8 @@ ansible::test() {
   - name: test a ansible role
     hosts: localhost
     tags: default
-    roles: "${TARGETS}"
+    roles:
+      - \""${TARGETS}"\"
     """ | tee -a deploy.yml
 
   # execute playbook
