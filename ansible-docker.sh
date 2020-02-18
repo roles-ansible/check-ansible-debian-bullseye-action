@@ -62,6 +62,8 @@ ansible::test::playbook() {
   ansible-playbook --connection=local --inventory host.ini ${TARGETS} 
 }
 
+# make sure git is up to date
+git submodule update --init --recursive
 if [ "$0" = "$BASH_SOURCE" ] ; then
   >&2 echo -E "\nRunning Ansible debian check...\n"
   ansible::prepare
