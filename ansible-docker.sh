@@ -48,10 +48,7 @@ ansible::test::role() {
     """ | tee -a deploy.yml
 
   # execute playbook
-  ansible-playbook \
-  --connection=local \ 
-  --inventory localhost, \
-  --limit localhost deploy.yml
+  ansible-playbook  --connection=local --inventory host.ini  --limit localhost deploy.yml
 }
 ansible::test::playbook() {
   : "${TARGETS?No targets to check. Nothing to do.}"
@@ -59,10 +56,7 @@ ansible::test::playbook() {
   pushd ${GITHUB_WORKSPACE}
 
   # execute playbook
-  ansible-playbook \
-  --connection=local \ 
-  --inventory localhost, \
-  --limit localhost ${TARGETS} 
+  ansible-playbook  --connection=local  --inventory host.ini --limit localhost ${TARGETS} 
 }
 
 
