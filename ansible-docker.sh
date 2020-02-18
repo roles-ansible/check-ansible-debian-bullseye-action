@@ -14,8 +14,7 @@ ansible::prepare() {
   pushd ${GITHUB_WORKSPACE}
 
   # generate ansible.cfg
-  if [ ! -f ansible.cfg ]; then
-    echo -e """
+  echo -e """
 [defaults]
 inventory = host.ini
 nocows = True
@@ -27,11 +26,10 @@ fact_caching_timeout = 7200
 stdout_callback = yaml
 ansible_python_interpreter=/usr/bin/python3
 ansible_connection=local
-""" | tee -a ansible.cfg
-  fi
+""" | tee ansible.cfg
 
   # create host list
-  echo -e "[local]\nlocalhost ansible_python_interpreter=/usr/bin/python3 ansible_connection=local" | tee -a host.ini
+  echo -e "[local]\nlocalhost ansible_python_interpreter=/usr/bin/python3 ansible_connection=local" | tee host.ini
 }
 ansible::test::role() {
   : "${TARGETS?No targets to check. Nothing to do.}"
