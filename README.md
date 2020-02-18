@@ -1,3 +1,4 @@
+[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-stable-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-debian-stable)
 [![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-stable-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-stable-action/blob/master/LICENSE)
 
  Check Ansible Debian stable
