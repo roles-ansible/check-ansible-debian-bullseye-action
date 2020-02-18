@@ -8,11 +8,28 @@ inputs:
       Paths to the ansible role or playbook you want to be tested.
       For example './', 'roles/my_role/' or 'site.yml'
     required: true
+  group:
+    description: |
+      When testing playbooks you have to tell ansible
+      the group you that we write in our hosts file.
+      For example 'servers' or what group you are using
+      in the playbook you want to test!
+    required: false
+  hosts:
+    description: |
+      When testing playbooks you have to give us
+      one example host we should use to test your playbook.
+      For example 'server1.example.com'.
+      We only spawn one docker container that mean
+      we can only test one host at the time. Sorry
+    required: false
 runs:
   using: docker
   image: Dockerfile
   env:
     TARGETS: ${{ inputs.targets }}
+    HOSTS: ${{ inputs.hosts }}
+    GROUP: ${{ inputs.group }}
 branding:
   icon: 'aperture' 
   color: 'green'

@@ -8,6 +8,7 @@ set -x
 #   [required] TARGETS : Path to your ansible role or to a playbook .yml file you want to be tested.
 #                       (e.g, './' or 'roles/my_role/' for roles or 'site.yml' for playbooks)
 
+
 ansible::prepare() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
@@ -46,27 +47,30 @@ ansible::test::role() {
     """ | tee -a deploy.yml
 
   # execute playbook
-  ansible-playbook  --connection=local --inventory host.ini  --limit localhost deploy.yml
+  ansible-playbook  --connection=local --limit localhost deploy.yml
 }
 ansible::test::playbook() {
   : "${TARGETS?No targets to check. Nothing to do.}"
   : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
+  : "${HOSTS?at least one valid host is required to check your playbook!}"
+  : "${GROUP?Please define the group your playbook is written for!}"
   pushd ${GITHUB_WORKSPACE}
 
-  # execute playbook
-  ansible-playbook  --connection=local  --inventory host.ini --limit localhost ${TARGETS} 
-}
+  echo -e "[${GROUP}]\n${HOSTS} ansible_python_interpreter=/usr/bin/python3 ansible_connection=local ansible_host=127.0.0.1" | tee host.ini
 
+  # execute playbook
+  ansible-playbook --connection=local --inventory host.ini ${TARGETS} 
+}
 
 if [ "$0" = "$BASH_SOURCE" ] ; then
   >&2 echo -E "\nRunning Ansible debian check...\n"
   ansible::prepare
   if [[ "${TARGETS}" == *.yml ]]
   then
-      echo -E "\nansible playbook detected\ninitialize playbook testing...\n"
+      echo -e "\nansible playbook detected\ninitialize playbook testing...\n"
       ansible::test::playbook
   else
-      echo -E "\nno playbook detected\ninitialize role testing...\n"
+      echo -e "\nno playbook detected\ninitialize role testing...\n"
       ansible::test::role
   fi
 fi
