@@ -23,6 +23,16 @@ inputs:
       We only spawn one docker container that mean
       we can only test one host at the time. Sorry
     required: false
+  requirements:
+    description: |
+      When testing playbooks and you are using ansible galaxy,
+      you may be interested in installing your requirements
+      from ansible galaxy.
+      To do this please provide us either the role name directly
+      -> e.g. 'do1jlr.ansible_version'
+      or your requiements.yml file.
+      -> e.g. 'requirements.yml'
+    required: false
 runs:
   using: docker
   image: Dockerfile
@@ -30,6 +40,7 @@ runs:
     TARGETS: ${{ inputs.targets }}
     HOSTS: ${{ inputs.hosts }}
     GROUP: ${{ inputs.group }}
+    REQUIREMENTS: ${{ inputs.requirements }}
 branding:
   icon: 'aperture' 
   color: 'green'

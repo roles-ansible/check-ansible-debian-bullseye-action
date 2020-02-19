@@ -64,6 +64,12 @@ ansible::test::playbook() {
 
 # make sure git is up to date
 git submodule update --init --recursive
+if [[ "${REQUIREMENTS}" == *.yml ]]
+then
+  ansible-galaxy install -r ${REQUIREMENTS}
+else
+  [ ! -z "${REQUIREMENTS}" ] && ansible-galaxy install ${REQUIREMENTS}
+fi
 if [ "$0" = "$BASH_SOURCE" ] ; then
   >&2 echo -E "\nRunning Ansible debian check...\n"
   ansible::prepare
