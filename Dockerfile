@@ -5,7 +5,7 @@ LABEL "repository"="https://github.com/roles-ansible/check-ansible-debian-stable
 LABEL "homepage"="https://github.com/roles-ansible/check-ansible-debian-stable-action"
 
 LABEL "com.github.actions.name"="check-ansible-debian-stable"
-LABEL "com.github.actions.description"="Check ansible role with Debian stable"
+LABEL "com.github.actions.description"="Check ansible role or playbook with Debian stable"
 LABEL "com.github.actions.icon"="aperture"
 LABEL "com.github.actions.color"="green"
 

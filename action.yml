@@ -1,18 +1,46 @@
 name: Check Ansible Debian stable
-description: Check ansible role with the Debian stable docker container
+description: Check ansible role or playbook with the debian:stable docker container
 author: L3D <l3d@c3woc.de>
 
 inputs: 
   targets:
     description: |
-      Paths to the ansible role you want to be tested.
-      For example './' or 'roles/my_role/'
+      Paths to the ansible role or playbook you want to be tested.
+      For example './', 'roles/my_role/' or 'site.yml'
     required: true
+  group:
+    description: |
+      When testing playbooks you have to tell ansible
+      the group you that we write in our hosts file.
+      For example 'servers' or what group you are using
+      in the playbook you want to test!
+    required: false
+  hosts:
+    description: |
+      When testing playbooks you have to give us
+      one example host we should use to test your playbook.
+      For example 'server1.example.com'.
+      We only spawn one docker container that mean
+      we can only test one host at the time. Sorry
+    required: false
+  requirements:
+    description: |
+      When testing playbooks and you are using ansible galaxy,
+      you may be interested in installing your requirements
+      from ansible galaxy.
+      To do this please provide us either the role name directly
+      -> e.g. 'do1jlr.ansible_version'
+      or your requiements.yml file.
+      -> e.g. 'requirements.yml'
+    required: false
 runs:
   using: docker
   image: Dockerfile
   env:
     TARGETS: ${{ inputs.targets }}
+    HOSTS: ${{ inputs.hosts }}
+    GROUP: ${{ inputs.group }}
+    REQUIREMENTS: ${{ inputs.requirements }}
 branding:
   icon: 'aperture' 
   color: 'green'
