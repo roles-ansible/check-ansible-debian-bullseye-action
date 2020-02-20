@@ -29,11 +29,36 @@ jobs:
       uses: roles-ansible/check-ansible-debian-stable-action@master
       with:
         targets: "./"
-        # [required]
-        # Paths to your ansible role or playboox.yml you want to test
-        # Some Examples:
-        # targets: "role/my_role/"
-        # targets: "site.yml"
+        #  [required]
+        #   Paths to your ansible role or playboox.yml you want to test
+        #   Some Examples:
+        #   targets: "role/my_role/"
+        #   targets: "site.yml"
+        #
+        # group: ""
+        #  [optional]
+        #   When testing playbooks you have to tell ansible
+        #   the group you that we write in our hosts file.
+        #   example:
+        #   group: 'servers'
+        # hosts: ""
+        #  [optional]
+        #   When testing playbooks you have to give one example
+        #   host this action should use to test your playbook.
+        #   > We only spawn one docker container that mean
+        #   > we can only test one host at the time. Sorry
+        #   some examples:
+        #   hosts: 'localhost'
+        #   hosts: 'srv01.example.com'
+        # requirements
+        #  [optional]
+        #   When testing playbooks and you are using ansible galaxy,
+        #   you may be interested in installing your requirements
+        #   from ansible galaxy.
+        #   To do this please provide us either the role name directly
+        #   requirements: 'do1jlr.ansible_version'
+        #   or your requiements.yml file.
+        #   requirements: 'requirements.yml'
 ```
 
 Alternatively, you can run the ansible check only on certain branches:
