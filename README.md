@@ -13,6 +13,7 @@ For example:
 ```yaml
 name: Ansible check debian:bullseye  # feel free to pick your own name
 
+# yamllint disable-line rule:truthy
 on: [push, pull_request]
 
 jobs:
