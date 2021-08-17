@@ -1,5 +1,5 @@
-[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-debian-bullseye)
-[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-bullseye-action/blob/master/LICENSE)
+[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/main/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-debian-bullseye)
+[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/main/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-bullseye-action/blob/main/LICENSE)
 
  Check Ansible Debian bullseye
 =======================
@@ -25,8 +25,8 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: ansible check with debian:bullseye
-      # replace "master" with any valid ref
-      uses: roles-ansible/check-ansible-debian-bullseye-action@master
+      # replace "main" with any valid ref
+      uses: roles-ansible/check-ansible-debian-bullseye-action@main
       with:
         targets: "./"
         #  [required]
@@ -69,7 +69,7 @@ on:
   push:
     branches:
     - stable
-    - master
+    - main
     - release/v*
 ```
 
