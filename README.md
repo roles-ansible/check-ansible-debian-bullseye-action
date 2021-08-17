@@ -1,17 +1,17 @@
-[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-sid-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-debian-sid)
-[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-sid-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-sid-action/blob/master/LICENSE)
+[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-debian-bullseye)
+[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-debian-bullseye-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-debian-bullseye-action/blob/master/LICENSE)
 
- Check Ansible Debian sid
+ Check Ansible Debian bullseye
 =======================
-This action allows you to test your ansible role or your playbook in a Docker Container with ``debian:sid``.
+This action allows you to test your ansible role or your playbook in a Docker Container with ``debian:bullseye``.
 
 ## Usage
-To use the action simply create an ``ansible-debian-sid.yml`` *(or choose custom ``*.yml`` name)* in the ``.github/workflows/`` directory.
+To use the action simply create an ``ansible-debian-bullseye.yml`` *(or choose custom ``*.yml`` name)* in the ``.github/workflows/`` directory.
 
 For example:
 
 ```yaml
-name: Ansible check debian:sid  # feel free to pick your own name
+name: Ansible check debian:bullseye  # feel free to pick your own name
 
 on: [push, pull_request]
 
@@ -24,9 +24,9 @@ jobs:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
 
-    - name: ansible check with debian:sid
+    - name: ansible check with debian:bullseye
       # replace "master" with any valid ref
-      uses: roles-ansible/check-ansible-debian-sid-action@master
+      uses: roles-ansible/check-ansible-debian-bullseye-action@master
       with:
         targets: "./"
         #  [required]

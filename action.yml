@@ -1,8 +1,8 @@
-name: Check Ansible Debian sid
-description: Check ansible role or playbook with the debian:sid docker container
+name: Check Ansible Debian bullseye
+description: Check ansible role or playbook with the debian:bullseye docker container
 author: L3D <l3d@c3woc.de>
 
-inputs: 
+inputs:
   targets:
     description: |
       Paths to the ansible role or playbook you want to be tested.
@@ -42,5 +42,5 @@ runs:
     GROUP: ${{ inputs.group }}
     REQUIREMENTS: ${{ inputs.requirements }}
 branding:
-  icon: 'aperture' 
+  icon: 'aperture'
   color: 'green'
